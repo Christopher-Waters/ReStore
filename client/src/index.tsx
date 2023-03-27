@@ -5,9 +5,14 @@ import App from './app/layout/App';
 import './app/layout/styles.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserHistory } from 'history';
-import { StoreProvider } from './app/context/StoreContext';
+
+import { Provider } from 'react-redux';
+import { store } from './app/store/configureStore';
+
+
 
 export const history = createBrowserHistory();
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,9 +20,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Router history={history}>
     <React.StrictMode>
-      <StoreProvider>
+        <Provider store={store}>
         <App />
-      </StoreProvider>
+        </Provider>
     </React.StrictMode>
   </Router>
 );
